@@ -1,0 +1,2 @@
+javac SnippetConverterDemo.java SnippetBuilder.java HTMLSnippetBuilder.java
+java SnippetConverterDemo

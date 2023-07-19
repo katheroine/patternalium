@@ -57,9 +57,26 @@ class SnippetConverterDemo {
   }
 
   private static void printElement(Node element) {
-    System.out.println("Content element: " + element.getNodeName());
-    System.out.println("Content: " + element.getTextContent());
-    System.out.println();
+    // System.out.println("Content element: " + element.getNodeName());
+    // System.out.println("Content: " + element.getTextContent());
+    // System.out.println();
+
+    HTMLSnippetBuilder snippetBuilder = new HTMLSnippetBuilder();
+    String snippet = "";
+
+    switch (element.getNodeName()) {
+      case "paragraph":
+        snippet = snippetBuilder.buildParagraph(element.getTextContent());
+        break;
+      case "list":
+        snippet = snippetBuilder.buildList(element.getTextContent());
+        break;
+      case "source":
+        snippet = snippetBuilder.buildSource(element.getTextContent());
+        break;
+    };
+
+    System.out.println(snippet);
   }
 
   private static void processXMLDemo() throws ParserConfigurationException, SAXException, IOException {
