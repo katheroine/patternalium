@@ -11,11 +11,35 @@ import java.io.FileNotFoundException;
 import org.w3c.dom.NodeList;
 
 class SnippetConvertingDirector {
-  private static DocumentBuilder provideXMLDocumentBuilder() throws ParserConfigurationException {
-      DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
-      DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
+  private SnippetBuilder snippetBuilder;
+  private String snippetPath;
 
-      return documentBuilder;
+  public SnippetConvertingDirector(SnippetBuilder snippetBuilder, String snippetPath) {
+    this.snippetBuilder = snippetBuilder;
+    this.snippetPath = snippetPath;
+  }
+
+  public void processXMLDemo() throws ParserConfigurationException, SAXException, IOException {
+    ArrayList<Node> snippetElements = extractXMLElements(snippetPath);
+
+    for (int i = 0; i < snippetElements.size(); i++) {
+      Node element = snippetElements.get(i);
+      printElement(element);
+    }
+  }
+
+  private static ArrayList<Node> extractXMLElements(String filePath) throws ParserConfigurationException, SAXException, IOException {
+    File file = new File(filePath);
+    ArrayList<Node> fileElements = extractXMLFileElements(file);
+
+    return fileElements;
+  }
+
+  private static ArrayList<Node> extractXMLFileElements(File documentFile) throws ParserConfigurationException, SAXException, IOException {
+    Document parsedDocument = parseXMLDocument(documentFile);
+    ArrayList<Node> documentElements = extractXMLDocumentElements(parsedDocument);
+
+    return documentElements;
   }
 
   private static Document parseXMLDocument(File documentFile) throws ParserConfigurationException, SAXException, IOException {
@@ -25,6 +49,13 @@ class SnippetConvertingDirector {
     parsedDocument.getDocumentElement().normalize();
 
     return parsedDocument;
+  }
+
+  private static DocumentBuilder provideXMLDocumentBuilder() throws ParserConfigurationException {
+      DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
+      DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
+
+      return documentBuilder;
   }
 
   private static ArrayList<Node> extractXMLDocumentElements(Document document) {
@@ -42,26 +73,7 @@ class SnippetConvertingDirector {
     return resultDocumentElements;
   }
 
-  private static ArrayList<Node> extractXMLFileElements(File documentFile) throws ParserConfigurationException, SAXException, IOException {
-    Document parsedDocument = parseXMLDocument(documentFile);
-    ArrayList<Node> documentElements = extractXMLDocumentElements(parsedDocument);
-
-    return documentElements;
-  }
-
-  private static ArrayList<Node> extractXMLElements(String filePath) throws ParserConfigurationException, SAXException, IOException {
-    File file = new File(filePath);
-    ArrayList<Node> fileElements = extractXMLFileElements(file);
-
-    return fileElements;
-  }
-
-  private static void printElement(Node element) {
-    // System.out.println("Content element: " + element.getNodeName());
-    // System.out.println("Content: " + element.getTextContent());
-    // System.out.println();
-
-    HTMLSnippetBuilder snippetBuilder = new HTMLSnippetBuilder();
+  private void printElement(Node element) {
     String snippet = "";
 
     switch (element.getNodeName()) {
@@ -78,32 +90,4 @@ class SnippetConvertingDirector {
 
     System.out.println(snippet);
   }
-
-  public static void processXMLDemo() throws ParserConfigurationException, SAXException, IOException {
-    String snippetUrl = "./input/snippet.xml";
-    ArrayList<Node> snippetElements = extractXMLElements(snippetUrl);
-
-    for (int i = 0; i < snippetElements.size(); i++) {
-      Node element = snippetElements.get(i);
-      printElement(element);
-    }
-  }
-
-  // public static void main(String[] args) {
-  //   try {
-  //     processXMLDemo();
-  //   } catch (ParserConfigurationException e) {
-  //     System.out.println("An XML parser configuration error occurred.");
-  //     e.printStackTrace();
-  //   } catch (SAXException e) {
-  //     System.out.println("An XML parsing operation error occurred.");
-  //     e.printStackTrace();
-  //   } catch (FileNotFoundException e) {
-  //     System.out.println("A file cannot be found.");
-  //     e.printStackTrace();
-  //   } catch (IOException e) {
-  //     System.out.println("An input-output operation error occurred.");
-  //     e.printStackTrace();
-  //   }
-  // }
 }

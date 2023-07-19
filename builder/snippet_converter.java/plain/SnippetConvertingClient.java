@@ -6,7 +6,9 @@ import java.io.FileNotFoundException;
 class SnippetConvertingClient {
   public static void main(String[] args) {
     try {
-      SnippetConvertingDirector director = new SnippetConvertingDirector();
+      String inputPath = "./input/snippet.xml";
+      HTMLSnippetBuilder builder = new HTMLSnippetBuilder();
+      SnippetConvertingDirector director = new SnippetConvertingDirector(builder, inputPath);
       director.processXMLDemo();
     } catch (ParserConfigurationException e) {
       System.out.println("An XML parser configuration error occurred.");
