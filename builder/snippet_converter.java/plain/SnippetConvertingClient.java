@@ -9,7 +9,9 @@ class SnippetConvertingClient {
       String inputPath = "./input/snippet.xml";
       HTMLSnippetBuilder builder = new HTMLSnippetBuilder();
       SnippetConvertingDirector director = new SnippetConvertingDirector(builder, inputPath);
-      director.processXMLDemo();
+      director.construct();
+      String result = builder.getResult();
+      System.out.println(result);
     } catch (ParserConfigurationException e) {
       System.out.println("An XML parser configuration error occurred.");
       e.printStackTrace();

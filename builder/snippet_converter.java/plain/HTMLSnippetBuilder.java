@@ -1,12 +1,14 @@
 class HTMLSnippetBuilder extends SnippetBuilder {
-  String buildParagraph(String rawParagraph) {
+  String result = "";
+
+  void buildParagraph(String rawParagraph) {
     String refinedParagraph = refineText(rawParagraph);
     String paragraph = "<p>" + refinedParagraph + "</p>";
 
-    return paragraph;
+    result += paragraph;
   }
 
-  String buildList(String rawList) {
+  void buildList(String rawList) {
     String list = "";
     String[] listItems = rawList.split("\\r?\\n|\\r");
 
@@ -23,14 +25,18 @@ class HTMLSnippetBuilder extends SnippetBuilder {
 
     list += "</ul>";
 
-    return list;
+    result += list;
   }
 
-  String buildSource(String rawSource) {
+  void buildSource(String rawSource) {
     String refinedSource = refineText(rawSource);
     String source = "<cite>" + refinedSource + "</cite>";
 
-    return source;
+    result += source;
+  }
+
+  public String getResult() {
+    return result;
   }
 
   static String refineText(String text) {

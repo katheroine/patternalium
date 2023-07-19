@@ -1,13 +1,10 @@
 class SnippetBuilder {
-  String buildParagraph(String rawParagraph) {
-    return "";
+  void buildParagraph(String rawParagraph) {
   };
 
-  String buildList(String rawList) {
-    return "";
+  void buildList(String rawList) {
   };
 
-  String buildSource(String rawSource) {
-    return "";
+  void buildSource(String rawSource) {
   };
 }

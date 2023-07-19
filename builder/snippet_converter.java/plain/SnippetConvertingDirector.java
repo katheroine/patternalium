@@ -19,12 +19,12 @@ class SnippetConvertingDirector {
     this.snippetPath = snippetPath;
   }
 
-  public void processXMLDemo() throws ParserConfigurationException, SAXException, IOException {
+  public void construct() throws ParserConfigurationException, SAXException, IOException {
     ArrayList<Node> snippetElements = extractXMLElements(snippetPath);
 
     for (int i = 0; i < snippetElements.size(); i++) {
       Node element = snippetElements.get(i);
-      printElement(element);
+      constructElement(element);
     }
   }
 
@@ -73,21 +73,17 @@ class SnippetConvertingDirector {
     return resultDocumentElements;
   }
 
-  private void printElement(Node element) {
-    String snippet = "";
-
+  private void constructElement(Node element) {
     switch (element.getNodeName()) {
       case "paragraph":
-        snippet = snippetBuilder.buildParagraph(element.getTextContent());
+        snippetBuilder.buildParagraph(element.getTextContent());
         break;
       case "list":
-        snippet = snippetBuilder.buildList(element.getTextContent());
+        snippetBuilder.buildList(element.getTextContent());
         break;
       case "source":
-        snippet = snippetBuilder.buildSource(element.getTextContent());
+        snippetBuilder.buildSource(element.getTextContent());
         break;
     };
-
-    System.out.println(snippet);
   }
 }
