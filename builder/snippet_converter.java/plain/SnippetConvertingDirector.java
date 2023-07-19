@@ -12,27 +12,20 @@ import org.w3c.dom.NodeList;
 
 class SnippetConvertingDirector {
   private SnippetBuilder snippetBuilder;
-  private String snippetPath;
+  private File snippetFile;
 
-  public SnippetConvertingDirector(SnippetBuilder snippetBuilder, String snippetPath) {
+  public SnippetConvertingDirector(SnippetBuilder snippetBuilder, File snippetFile) {
     this.snippetBuilder = snippetBuilder;
-    this.snippetPath = snippetPath;
+    this.snippetFile = snippetFile;
   }
 
   public void construct() throws ParserConfigurationException, SAXException, IOException {
-    ArrayList<Node> snippetElements = extractXMLElements(snippetPath);
+    ArrayList<Node> snippetElements = extractXMLFileElements(snippetFile);
 
     for (int i = 0; i < snippetElements.size(); i++) {
       Node element = snippetElements.get(i);
       constructElement(element);
     }
-  }
-
-  private static ArrayList<Node> extractXMLElements(String filePath) throws ParserConfigurationException, SAXException, IOException {
-    File file = new File(filePath);
-    ArrayList<Node> fileElements = extractXMLFileElements(file);
-
-    return fileElements;
   }
 
   private static ArrayList<Node> extractXMLFileElements(File documentFile) throws ParserConfigurationException, SAXException, IOException {
