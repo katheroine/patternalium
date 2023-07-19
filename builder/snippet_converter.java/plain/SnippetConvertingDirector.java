@@ -10,7 +10,7 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.FileNotFoundException;
 import org.w3c.dom.NodeList;
 
-class SnippetConverterDemo {
+class SnippetConvertingDirector {
   private static DocumentBuilder provideXMLDocumentBuilder() throws ParserConfigurationException {
       DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
       DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
@@ -79,7 +79,7 @@ class SnippetConverterDemo {
     System.out.println(snippet);
   }
 
-  private static void processXMLDemo() throws ParserConfigurationException, SAXException, IOException {
+  public static void processXMLDemo() throws ParserConfigurationException, SAXException, IOException {
     String snippetUrl = "./input/snippet.xml";
     ArrayList<Node> snippetElements = extractXMLElements(snippetUrl);
 
@@ -89,21 +89,21 @@ class SnippetConverterDemo {
     }
   }
 
-  public static void main(String[] args) {
-    try {
-      processXMLDemo();
-    } catch (ParserConfigurationException e) {
-      System.out.println("An XML parser configuration error occurred.");
-      e.printStackTrace();
-    } catch (SAXException e) {
-      System.out.println("An XML parsing operation error occurred.");
-      e.printStackTrace();
-    } catch (FileNotFoundException e) {
-      System.out.println("A file cannot be found.");
-      e.printStackTrace();
-    } catch (IOException e) {
-      System.out.println("An input-output operation error occurred.");
-      e.printStackTrace();
-    }
-  }
+  // public static void main(String[] args) {
+  //   try {
+  //     processXMLDemo();
+  //   } catch (ParserConfigurationException e) {
+  //     System.out.println("An XML parser configuration error occurred.");
+  //     e.printStackTrace();
+  //   } catch (SAXException e) {
+  //     System.out.println("An XML parsing operation error occurred.");
+  //     e.printStackTrace();
+  //   } catch (FileNotFoundException e) {
+  //     System.out.println("A file cannot be found.");
+  //     e.printStackTrace();
+  //   } catch (IOException e) {
+  //     System.out.println("An input-output operation error occurred.");
+  //     e.printStackTrace();
+  //   }
+  // }
 }
