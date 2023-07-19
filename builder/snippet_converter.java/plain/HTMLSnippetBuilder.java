@@ -1,13 +1,42 @@
 class HTMLSnippetBuilder extends SnippetBuilder {
   String buildParagraph(String rawParagraph) {
-    return "PARAGRAPH";
+    String refinedParagraph = refineText(rawParagraph);
+    String paragraph = "<p>" + refinedParagraph + "</p>";
+
+    return paragraph;
   }
 
   String buildList(String rawList) {
-    return "LIST";
+    String list = "";
+    String[] listItems = rawList.split("\\r?\\n|\\r");
+
+    list += "<ul>";
+
+    for (String rawListItem : listItems) {
+      String refinedListItem = refineText(rawListItem);
+
+      if (refinedListItem == "")
+        continue;
+
+      list += "<li>" + refinedListItem + "</li>";
+    }
+
+    list += "</ul>";
+
+    return list;
   }
 
   String buildSource(String rawSource) {
-    return "SOURCE";
+    String refinedSource = refineText(rawSource);
+    String source = "<cite>" + refinedSource + "</cite>";
+
+    return source;
+  }
+
+  static String refineText(String text) {
+    return text
+      .replaceAll("\\r\\n|\\r|\\n", "")
+      .replaceAll("( )+", " ")
+      .trim();
   }
 }
