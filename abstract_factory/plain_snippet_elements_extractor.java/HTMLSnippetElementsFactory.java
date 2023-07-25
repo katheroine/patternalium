@@ -1,19 +1,16 @@
 import java.util.ArrayList;
 
 class HTMLSnippetElementsFactory extends SnippetElementsFactory {
-  String createParagraph(String rawParagraph) {
+  ParagraphElement createParagraph(String rawParagraph) {
     String refinedParagraph = refineText(rawParagraph);
-    // String paragraph = "<p>" + refinedParagraph + "</p>";
     HTMLParagraphElement paragraph = new HTMLParagraphElement(refinedParagraph);
 
-    return paragraph.getParagraphContent();
+    return paragraph;
   }
 
-  String createList(String rawList) {
-    // String list = "";
+  ListElement createList(String rawList) {
     String[] rawListItems = splitText(rawList);
 
-    // list += "<ul>";
     ArrayList<HTMLListItemElement> listItems = new ArrayList<HTMLListItemElement>();
 
     for (String rawListItem : rawListItems) {
@@ -24,21 +21,18 @@ class HTMLSnippetElementsFactory extends SnippetElementsFactory {
 
       HTMLListItemElement listItem = new HTMLListItemElement(refinedListItem);
       listItems.add(listItem);
-      // list += listItem.getContent();
     }
 
-    // list += "</ul>";
     HTMLListElement list = new HTMLListElement(listItems);
 
-    return list.getListContent();
+    return list;
   }
 
-  String createSource(String rawSource) {
+  SourceElement createSource(String rawSource) {
     String refinedSource = refineText(rawSource);
-    // String source = "<cite>" + refinedSource + "</cite>";
     HTMLSourceElement source = new HTMLSourceElement(refinedSource);
 
-    return source.getSourceContent();
+    return source;
   }
 
   static String refineText(String text) {

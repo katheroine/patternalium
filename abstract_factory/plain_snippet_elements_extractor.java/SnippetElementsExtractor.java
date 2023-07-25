@@ -71,20 +71,23 @@ class SnippetElementsExtractor {
   }
 
   private void constructElement(Node element) {
-    String extractedElement = "";
+    String extractedElementContent = "";
 
     switch (element.getNodeName()) {
       case "paragraph":
-        extractedElement = snippetElementsFactory.createParagraph(element.getTextContent());
+        extractedElementContent = snippetElementsFactory.createParagraph(element.getTextContent())
+          .getParagraphContent();
         break;
       case "list":
-        extractedElement = snippetElementsFactory.createList(element.getTextContent());
+        extractedElementContent = snippetElementsFactory.createList(element.getTextContent())
+          .getListContent();
         break;
       case "source":
-        extractedElement = snippetElementsFactory.createSource(element.getTextContent());
+        extractedElementContent = snippetElementsFactory.createSource(element.getTextContent())
+          .getSourceContent();
         break;
     };
 
-    extractedElements.add(extractedElement);
+    extractedElements.add(extractedElementContent);
   }
 }

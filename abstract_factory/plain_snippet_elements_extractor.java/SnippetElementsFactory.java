@@ -1,13 +1,13 @@
 class SnippetElementsFactory {
-  String createParagraph(String rawParagraph) {
-    return "";
+  ParagraphElement createParagraph(String rawParagraph) {
+    return new ParagraphElement();
   };
 
-  String createList(String rawList) {
-    return "";
+  ListElement createList(String rawList) {
+    return new ListElement();
   };
 
-  String createSource(String rawSource) {
-    return "";
+  SourceElement createSource(String rawSource) {
+    return new SourceElement();
   };
 }
