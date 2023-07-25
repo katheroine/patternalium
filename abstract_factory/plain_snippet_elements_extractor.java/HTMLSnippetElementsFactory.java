@@ -1,51 +1,54 @@
-class HTMLSnippetElementsFactory extends SnippetElementsFactory {
-  // String result = "";
+import java.util.ArrayList;
 
+class HTMLSnippetElementsFactory extends SnippetElementsFactory {
   String createParagraph(String rawParagraph) {
     String refinedParagraph = refineText(rawParagraph);
-    String paragraph = "<p>" + refinedParagraph + "</p>";
+    // String paragraph = "<p>" + refinedParagraph + "</p>";
+    HTMLParagraphElement paragraph = new HTMLParagraphElement(refinedParagraph);
 
-    // result += paragraph;
-    return paragraph;
+    return paragraph.getParagraphContent();
   }
 
   String createList(String rawList) {
-    String list = "";
-    String[] listItems = rawList.split("\\r?\\n|\\r");
+    // String list = "";
+    String[] rawListItems = splitText(rawList);
 
-    list += "<ul>";
+    // list += "<ul>";
+    ArrayList<HTMLListItemElement> listItems = new ArrayList<HTMLListItemElement>();
 
-    for (String rawListItem : listItems) {
+    for (String rawListItem : rawListItems) {
       String refinedListItem = refineText(rawListItem);
 
       if (refinedListItem == "")
         continue;
 
-      list += "<li>" + refinedListItem + "</li>";
+      HTMLListItemElement listItem = new HTMLListItemElement(refinedListItem);
+      listItems.add(listItem);
+      // list += listItem.getContent();
     }
 
-    list += "</ul>";
+    // list += "</ul>";
+    HTMLListElement list = new HTMLListElement(listItems);
 
-    // result += list;
-    return list;
+    return list.getListContent();
   }
 
   String createSource(String rawSource) {
     String refinedSource = refineText(rawSource);
-    String source = "<cite>" + refinedSource + "</cite>";
+    // String source = "<cite>" + refinedSource + "</cite>";
+    HTMLSourceElement source = new HTMLSourceElement(refinedSource);
 
-    // result += source;
-    return source;
+    return source.getSourceContent();
   }
-
-  // public String getResult() {
-  //   return result;
-  // }
 
   static String refineText(String text) {
     return text
       .replaceAll("\\r\\n|\\r|\\n", "")
       .replaceAll("( )+", " ")
       .trim();
+  }
+
+  static String[] splitText(String text) {
+    return text.split("\\r?\\n|\\r");
   }
 }

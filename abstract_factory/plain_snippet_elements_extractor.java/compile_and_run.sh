@@ -1,2 +1,2 @@
-javac SnippetElementsExtractingClient.java SnippetElementsExtractor.java SnippetElementsFactory.java HTMLSnippetElementsFactory.java
+javac SnippetElementsExtractingClient.java SnippetElementsExtractor.java SnippetElementsFactory.java HTMLSnippetElementsFactory.java ParagraphElement.java HTMLParagraphElement.java ListItemElement.java HTMLListItemElement.java ListElement.java HTMLListElement.java SourceElement.java HTMLSourceElement.java
 java SnippetElementsExtractingClient
