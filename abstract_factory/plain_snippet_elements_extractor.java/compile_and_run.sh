@@ -1,0 +1,2 @@
+javac SnippetElementsExtractingClient.java SnippetElementsExtractor.java SnippetElementsFactory.java HTMLSnippetElementsFactory.java
+java SnippetElementsExtractingClient
