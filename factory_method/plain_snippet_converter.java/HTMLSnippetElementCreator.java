@@ -19,7 +19,6 @@ class HTMLSnippetElementCreator extends SnippetElementCreator {
 
   SnippetElementProduct createParagraph(String rawParagraph) {
     String refinedParagraph = refineText(rawParagraph);
-    String paragraph = "<p>" + refinedParagraph + "</p>";
 
     return new HTMLSnippetElementProduct("p", refinedParagraph);
   }
@@ -42,7 +41,6 @@ class HTMLSnippetElementCreator extends SnippetElementCreator {
 
   SnippetElementProduct createSource(String rawSource) {
     String refinedSource = refineText(rawSource);
-    String source = "<cite>" + refinedSource + "</cite>";
 
     return new HTMLSnippetElementProduct("cite", refinedSource);
   }
