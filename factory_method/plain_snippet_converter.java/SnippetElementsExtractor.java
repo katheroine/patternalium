@@ -11,13 +11,11 @@ import java.io.FileNotFoundException;
 import org.w3c.dom.NodeList;
 
 class SnippetElementsExtractor {
-  // private SnippetElementsFactory snippetElementsFactory;
   private SnippetElementCreator snippetElementCreator;
   private File snippetFile;
   private ArrayList<String> extractedElements;
 
   public SnippetElementsExtractor(SnippetElementCreator snippetElementCreator, File snippetFile) {
-    // this.snippetElementsFactory = snippetElementsFactory;
     this.snippetElementCreator = snippetElementCreator;
     this.snippetFile = snippetFile;
     extractedElements = new ArrayList<String>();
@@ -73,27 +71,10 @@ class SnippetElementsExtractor {
   }
 
   private void constructElement(Node element) {
-    // String extractedElementContent = "";
-
     snippetElementCreator.setElementTypeOperation(element.getNodeName());
     snippetElementCreator.setElementCoreContentOperation(element.getTextContent());
 
     String extractedElementContent = snippetElementCreator.factoryMethod().getContent();
-
-    // switch (element.getNodeName()) {
-    //   case "paragraph":
-    //     extractedElementContent = snippetElementsFactory.createParagraph(element.getTextContent())
-    //       .getParagraphContent();
-    //     break;
-    //   case "list":
-    //     extractedElementContent = snippetElementsFactory.createList(element.getTextContent())
-    //       .getListContent();
-    //     break;
-    //   case "source":
-    //     extractedElementContent = snippetElementsFactory.createSource(element.getTextContent())
-    //       .getSourceContent();
-    //     break;
-    // };
 
     extractedElements.add(extractedElementContent);
   }

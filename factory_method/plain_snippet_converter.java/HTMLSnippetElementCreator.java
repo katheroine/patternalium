@@ -21,16 +21,12 @@ class HTMLSnippetElementCreator extends SnippetElementCreator {
     String refinedParagraph = refineText(rawParagraph);
     String paragraph = "<p>" + refinedParagraph + "</p>";
 
-    // return paragraph;
     return new HTMLSnippetElementProduct("p", refinedParagraph);
   }
 
   SnippetElementProduct createList(String rawList) {
-    // String list = "";
     String[] listItems = splitText(rawList);
     String refinedList = "";
-
-    // list += "<ul>";
 
     for (String rawListItem : listItems) {
       String refinedListItem = refineText(rawListItem);
@@ -38,13 +34,9 @@ class HTMLSnippetElementCreator extends SnippetElementCreator {
       if (refinedListItem == "")
         continue;
 
-      // list += "<li>" + refinedListItem + "</li>";
       refinedList += "<li>" + refinedListItem + "</li>";
     }
 
-    // list += "</ul>";
-
-    // return list;
     return new HTMLSnippetElementProduct("ul", refinedList);
   }
 
@@ -52,7 +44,6 @@ class HTMLSnippetElementCreator extends SnippetElementCreator {
     String refinedSource = refineText(rawSource);
     String source = "<cite>" + refinedSource + "</cite>";
 
-    // return source;
     return new HTMLSnippetElementProduct("cite", refinedSource);
   }
 

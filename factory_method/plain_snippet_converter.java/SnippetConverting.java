@@ -19,7 +19,6 @@ class SnippetConverting {
   public static void main(String[] args) {
     try {
       File snippetInputFile = new File(snippetInputFilePath);
-      // HTMLSnippetElementsFactory factory = new HTMLSnippetElementsFactory();
       HTMLSnippetElementCreator creator = new HTMLSnippetElementCreator();
       SnippetElementsExtractor extractor = new SnippetElementsExtractor(creator, snippetInputFile);
       ArrayList<String> extractedElements = extractor.extract();
