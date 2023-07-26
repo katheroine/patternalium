@@ -6,7 +6,7 @@ import org.xml.sax.SAXException;
 import java.io.IOException;
 import java.io.FileNotFoundException;
 
-class SnippetConvertingClient {
+class SnippetConverting {
   private static String snippetInputFilePath = "./input/snippet.xml";
   private static String snippetOutputFilePath = "./output/snippet.html";
 
@@ -20,7 +20,7 @@ class SnippetConvertingClient {
     try {
       File snippetInputFile = new File(snippetInputFilePath);
       HTMLSnippetElementsFactory factory = new HTMLSnippetElementsFactory();
-      SnippetElementsExtractor extractor = new SnippetElementsExtractor(factory, snippetInputFile);
+      SnippetElementsExtractingClient extractor = new SnippetElementsExtractingClient(factory, snippetInputFile);
       ArrayList<String> extractedElements = extractor.extract();
 
       String result = "";

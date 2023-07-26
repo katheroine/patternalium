@@ -10,12 +10,12 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.FileNotFoundException;
 import org.w3c.dom.NodeList;
 
-class SnippetElementsExtractor {
+class SnippetElementsExtractingClient {
   private SnippetElementsFactory snippetElementsFactory;
   private File snippetFile;
   private ArrayList<String> extractedElements;
 
-  public SnippetElementsExtractor(SnippetElementsFactory snippetElementsFactory, File snippetFile) {
+  public SnippetElementsExtractingClient(SnippetElementsFactory snippetElementsFactory, File snippetFile) {
     this.snippetElementsFactory = snippetElementsFactory;
     this.snippetFile = snippetFile;
     extractedElements = new ArrayList<String>();
