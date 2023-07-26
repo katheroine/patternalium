@@ -78,7 +78,7 @@ class SnippetElementsExtractor {
     snippetElementCreator.setElementTypeOperation(element.getNodeName());
     snippetElementCreator.setElementCoreContentOperation(element.getTextContent());
 
-    String extractedElementContent = snippetElementCreator.factoryMethod();
+    String extractedElementContent = snippetElementCreator.factoryMethod().getContent();
 
     // switch (element.getNodeName()) {
     //   case "paragraph":

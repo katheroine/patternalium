@@ -2,8 +2,8 @@ class SnippetElementCreator {
   protected String elementType;
   protected String elementCoreContent;
 
-  public String factoryMethod() {
-    return "";
+  public SnippetElementProduct factoryMethod() {
+    return new SnippetElementProduct();
   }
 
   public void setElementTypeOperation(String elementType) {

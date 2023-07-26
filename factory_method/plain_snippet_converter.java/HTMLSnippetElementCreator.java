@@ -1,6 +1,6 @@
 class HTMLSnippetElementCreator extends SnippetElementCreator {
-  public String factoryMethod() {
-    String product = "";
+  public SnippetElementProduct factoryMethod() {
+    SnippetElementProduct product = new SnippetElementProduct();
 
     switch (elementType) {
       case "paragraph":
@@ -17,18 +17,20 @@ class HTMLSnippetElementCreator extends SnippetElementCreator {
     return product;
   }
 
-  String createParagraph(String rawParagraph) {
+  SnippetElementProduct createParagraph(String rawParagraph) {
     String refinedParagraph = refineText(rawParagraph);
     String paragraph = "<p>" + refinedParagraph + "</p>";
 
-    return paragraph;
+    // return paragraph;
+    return new HTMLSnippetElementProduct("p", refinedParagraph);
   }
 
-  String createList(String rawList) {
-    String list = "";
+  SnippetElementProduct createList(String rawList) {
+    // String list = "";
     String[] listItems = splitText(rawList);
+    String refinedList = "";
 
-    list += "<ul>";
+    // list += "<ul>";
 
     for (String rawListItem : listItems) {
       String refinedListItem = refineText(rawListItem);
@@ -36,19 +38,22 @@ class HTMLSnippetElementCreator extends SnippetElementCreator {
       if (refinedListItem == "")
         continue;
 
-      list += "<li>" + refinedListItem + "</li>";
+      // list += "<li>" + refinedListItem + "</li>";
+      refinedList += "<li>" + refinedListItem + "</li>";
     }
 
-    list += "</ul>";
+    // list += "</ul>";
 
-    return list;
+    // return list;
+    return new HTMLSnippetElementProduct("ul", refinedList);
   }
 
-  String createSource(String rawSource) {
+  SnippetElementProduct createSource(String rawSource) {
     String refinedSource = refineText(rawSource);
     String source = "<cite>" + refinedSource + "</cite>";
 
-    return source;
+    // return source;
+    return new HTMLSnippetElementProduct("cite", refinedSource);
   }
 
   static String refineText(String text) {
