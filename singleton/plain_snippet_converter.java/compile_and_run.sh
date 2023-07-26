@@ -1,0 +1,2 @@
+javac SnippetConverting.java SnippetElementsExtractor.java HTMLSnippetElementSynthesizerSingleton.java
+java SnippetConverting
