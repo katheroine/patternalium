@@ -9,17 +9,14 @@ import org.w3c.dom.Node;
 import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.FileNotFoundException;
 import org.w3c.dom.NodeList;
-// import java.util.HashMap;
 
 class SnippetElementsExtractor {
-  // private HTMLSnippetElementSynthesizerSingleton snippetElementSynthesizer;
-  // private Map<String, SnippetElementPrototype> snippetElementPrototypes;
   SnippetElementPrototype snippetElementPrototype;
   private File snippetFile;
   private ArrayList<String> extractedElements;
 
-  public SnippetElementsExtractor(File snippetFile) {
-    // this.snippetElementSynthesizer = HTMLSnippetElementSynthesizerSingleton.getInstance();
+  public SnippetElementsExtractor(SnippetElementPrototype snippetElementPrototype, File snippetFile) {
+    this.snippetElementPrototype = snippetElementPrototype;
     this.snippetFile = snippetFile;
     extractedElements = new ArrayList<String>();
   }
@@ -74,17 +71,10 @@ class SnippetElementsExtractor {
   }
 
   private void constructElement(Node element) {
-    // snippetElementCreator.setElementTypeOperation(element.getNodeName());
-    // snippetElementCreator.setElementCoreContentOperation(element.getTextContent());
-    if (snippetElementPrototype == null) {
-      snippetElementPrototype = new HTMLSnippetElementPrototype(element.getNodeName(), element.getTextContent());
-    }
-
     SnippetElementPrototype currentSnippetElementPrototype = snippetElementPrototype.clone();
     currentSnippetElementPrototype.setElementType(element.getNodeName());
     currentSnippetElementPrototype.setContentCore(element.getTextContent());
 
-    // String extractedElementContent = snippetElementSynthesizer.synthesize(element.getNodeName(), element.getTextContent());
     String extractedElementContent = currentSnippetElementPrototype.getContent();
 
     extractedElements.add(extractedElementContent);

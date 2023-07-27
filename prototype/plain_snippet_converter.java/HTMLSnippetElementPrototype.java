@@ -1,12 +1,6 @@
 class HTMLSnippetElementPrototype implements SnippetElementPrototype {
   private String elementType;
-  // private String tag;
   private String contentCore;
-
-  public HTMLSnippetElementPrototype(String elementType, String contentCore) {
-    this.elementType = elementType;
-    this.contentCore = contentCore;
-  }
 
   public void setElementType(String elementType) {
     this.elementType = elementType;
@@ -16,9 +10,10 @@ class HTMLSnippetElementPrototype implements SnippetElementPrototype {
     this.contentCore = contentCore;
   }
 
-  @Override
   public SnippetElementPrototype clone() {
-    HTMLSnippetElementPrototype clonnedSnippetElement = new HTMLSnippetElementPrototype(elementType, contentCore);
+    HTMLSnippetElementPrototype clonnedSnippetElement = new HTMLSnippetElementPrototype();
+    clonnedSnippetElement.setElementType(elementType);
+    clonnedSnippetElement.setContentCore(contentCore);
 
     return clonnedSnippetElement;
   }
