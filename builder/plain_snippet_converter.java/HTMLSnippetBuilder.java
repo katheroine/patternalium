@@ -10,7 +10,7 @@ class HTMLSnippetBuilder extends SnippetBuilder {
 
   void buildList(String rawList) {
     String list = "";
-    String[] listItems = rawList.split("\\r?\\n|\\r");
+    String[] listItems = splitText(rawList);
 
     list += "<ul>";
 
@@ -44,5 +44,9 @@ class HTMLSnippetBuilder extends SnippetBuilder {
       .replaceAll("\\r\\n|\\r|\\n", "")
       .replaceAll("( )+", " ")
       .trim();
+  }
+
+  static String[] splitText(String text) {
+    return text.split("\\r?\\n|\\r");
   }
 }
