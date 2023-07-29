@@ -73,13 +73,14 @@ class SnippetElementsExtractor {
   private void constructElement(Node element) {
     // snippetElementCreator.setElementTypeOperation(element.getNodeName());
     // snippetElementCreator.setElementCoreContentOperation(element.getTextContent());
-    ArrayList<HTMLSnippetElementAdaptee> snippetElements = new ArrayList<HTMLSnippetElementAdaptee>();
+    ArrayList<SnippetElementAdapter> snippetElements = new ArrayList<SnippetElementAdapter>();
 
     switch (element.getNodeName()) {
       case "paragraph":
         // snippetBuilder.buildParagraph(element.getTextContent());
         HTMLSnippetElementAdaptee HTMLSnippetParagraphElement = new HTMLSnippetElementAdaptee("p", refineText(element.getTextContent()));
-        snippetElements.add(HTMLSnippetParagraphElement);
+        SnippetElementAdapter snippetParagraphElement = new SnippetElementAdapter(HTMLSnippetParagraphElement);
+        snippetElements.add(snippetParagraphElement);
 
         break;
       case "list":
@@ -102,21 +103,23 @@ class SnippetElementsExtractor {
         // listItems.add(HTMLSnippetListItemElement);
 
         HTMLSnippetElementAdaptee HTMLSnippetListElement = new HTMLSnippetElementAdaptee("ul", listItems);
-        snippetElements.add(HTMLSnippetListElement);
+        SnippetElementAdapter snippetListElement = new SnippetElementAdapter(HTMLSnippetListElement);
+        snippetElements.add(snippetListElement);
 
         break;
       case "source":
         // snippetBuilder.buildSource(element.getTextContent());
         HTMLSnippetElementAdaptee HTMLSnippetSourceElement = new HTMLSnippetElementAdaptee("cite", refineText(element.getTextContent()));
-        snippetElements.add(HTMLSnippetSourceElement);
+        SnippetElementAdapter snippetSourceElement = new SnippetElementAdapter(HTMLSnippetSourceElement);
+        snippetElements.add(snippetSourceElement);
 
         break;
     };
 
     // String extractedElementContent = snippetElementCreator.factoryMethod().getContent();
 
-    for (HTMLSnippetElementAdaptee snippetElement : snippetElements) {
-      extractedElements.add(snippetElement.getHTMLContent());
+    for (SnippetElementAdapter snippetElement : snippetElements) {
+      extractedElements.add(snippetElement.getContent());
     }
   }
 
