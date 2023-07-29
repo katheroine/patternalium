@@ -13,15 +13,16 @@ import org.w3c.dom.NodeList;
 class SnippetElementsExtractor {
   // private SnippetElementCreator snippetElementCreator;
   private File snippetFile;
-  private ArrayList<String> extractedElements;
+  // private ArrayList<String> extractedElements;
+  private ArrayList<SnippetElementTarget> extractedElements;
 
   public SnippetElementsExtractor(File snippetFile) {
     // this.snippetElementCreator = snippetElementCreator;
     this.snippetFile = snippetFile;
-    extractedElements = new ArrayList<String>();
+    extractedElements = new ArrayList<SnippetElementTarget>();
   }
 
-  public ArrayList<String> extract() throws ParserConfigurationException, SAXException, IOException {
+  public ArrayList<SnippetElementTarget> extract() throws ParserConfigurationException, SAXException, IOException {
     ArrayList<Node> snippetElements = extractXMLFileElements(snippetFile);
 
     for (int i = 0; i < snippetElements.size(); i++) {
@@ -73,14 +74,14 @@ class SnippetElementsExtractor {
   private void constructElement(Node element) {
     // snippetElementCreator.setElementTypeOperation(element.getNodeName());
     // snippetElementCreator.setElementCoreContentOperation(element.getTextContent());
-    ArrayList<SnippetElementAdapter> snippetElements = new ArrayList<SnippetElementAdapter>();
+    // ArrayList<SnippetElementAdapter> snippetElements = new ArrayList<SnippetElementAdapter>();
 
     switch (element.getNodeName()) {
       case "paragraph":
         // snippetBuilder.buildParagraph(element.getTextContent());
         HTMLSnippetElementAdaptee HTMLSnippetParagraphElement = new HTMLSnippetElementAdaptee("p", refineText(element.getTextContent()));
         SnippetElementAdapter snippetParagraphElement = new SnippetElementAdapter(HTMLSnippetParagraphElement);
-        snippetElements.add(snippetParagraphElement);
+        extractedElements.add(snippetParagraphElement);
 
         break;
       case "list":
@@ -104,23 +105,23 @@ class SnippetElementsExtractor {
 
         HTMLSnippetElementAdaptee HTMLSnippetListElement = new HTMLSnippetElementAdaptee("ul", listItems);
         SnippetElementAdapter snippetListElement = new SnippetElementAdapter(HTMLSnippetListElement);
-        snippetElements.add(snippetListElement);
+        extractedElements.add(snippetListElement);
 
         break;
       case "source":
         // snippetBuilder.buildSource(element.getTextContent());
         HTMLSnippetElementAdaptee HTMLSnippetSourceElement = new HTMLSnippetElementAdaptee("cite", refineText(element.getTextContent()));
         SnippetElementAdapter snippetSourceElement = new SnippetElementAdapter(HTMLSnippetSourceElement);
-        snippetElements.add(snippetSourceElement);
+        extractedElements.add(snippetSourceElement);
 
         break;
     };
 
     // String extractedElementContent = snippetElementCreator.factoryMethod().getContent();
 
-    for (SnippetElementAdapter snippetElement : snippetElements) {
-      extractedElements.add(snippetElement.getContent());
-    }
+    // for (SnippetElementAdapter snippetElement : snippetElements) {
+    //   extractedElements.add(snippetElement.getContent());
+    // }
   }
 
   static String refineText(String text) {
