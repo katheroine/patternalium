@@ -11,13 +11,10 @@ import java.io.FileNotFoundException;
 import org.w3c.dom.NodeList;
 
 class SnippetElementsExtractor {
-  // private SnippetElementCreator snippetElementCreator;
   private File snippetFile;
-  // private ArrayList<String> extractedElements;
   private ArrayList<SnippetElementTarget> extractedElements;
 
   public SnippetElementsExtractor(File snippetFile) {
-    // this.snippetElementCreator = snippetElementCreator;
     this.snippetFile = snippetFile;
     extractedElements = new ArrayList<SnippetElementTarget>();
   }
@@ -72,20 +69,14 @@ class SnippetElementsExtractor {
   }
 
   private void constructElement(Node element) {
-    // snippetElementCreator.setElementTypeOperation(element.getNodeName());
-    // snippetElementCreator.setElementCoreContentOperation(element.getTextContent());
-    // ArrayList<SnippetElementAdapter> snippetElements = new ArrayList<SnippetElementAdapter>();
-
     switch (element.getNodeName()) {
       case "paragraph":
-        // snippetBuilder.buildParagraph(element.getTextContent());
         HTMLSnippetElementAdaptee HTMLSnippetParagraphElement = new HTMLSnippetElementAdaptee("p", refineText(element.getTextContent()));
         SnippetElementAdapter snippetParagraphElement = new SnippetElementAdapter(HTMLSnippetParagraphElement);
         extractedElements.add(snippetParagraphElement);
 
         break;
       case "list":
-        // snippetBuilder.buildList(element.getTextContent());
         String[] listRawItems = splitText(element.getTextContent());
         ArrayList<HTMLSnippetElementAdaptee> listItems = new ArrayList<HTMLSnippetElementAdaptee>();
 
@@ -95,13 +86,9 @@ class SnippetElementsExtractor {
           if (refinedListItem == "")
             continue;
 
-          // list += "<li>" + refinedListItem + "</li>";
           HTMLSnippetElementAdaptee HTMLSnippetListItemElement = new HTMLSnippetElementAdaptee("li", refinedListItem);
           listItems.add(HTMLSnippetListItemElement);
         }
-
-        // HTMLSnippetElementAdaptee HTMLSnippetListItemElement = new HTMLSnippetElementAdaptee("li", "nevermind");
-        // listItems.add(HTMLSnippetListItemElement);
 
         HTMLSnippetElementAdaptee HTMLSnippetListElement = new HTMLSnippetElementAdaptee("ul", listItems);
         SnippetElementAdapter snippetListElement = new SnippetElementAdapter(HTMLSnippetListElement);
@@ -109,19 +96,12 @@ class SnippetElementsExtractor {
 
         break;
       case "source":
-        // snippetBuilder.buildSource(element.getTextContent());
         HTMLSnippetElementAdaptee HTMLSnippetSourceElement = new HTMLSnippetElementAdaptee("cite", refineText(element.getTextContent()));
         SnippetElementAdapter snippetSourceElement = new SnippetElementAdapter(HTMLSnippetSourceElement);
         extractedElements.add(snippetSourceElement);
 
         break;
     };
-
-    // String extractedElementContent = snippetElementCreator.factoryMethod().getContent();
-
-    // for (SnippetElementAdapter snippetElement : snippetElements) {
-    //   extractedElements.add(snippetElement.getContent());
-    // }
   }
 
   static String refineText(String text) {

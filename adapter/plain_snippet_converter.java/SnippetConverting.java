@@ -10,30 +10,14 @@ class SnippetConverting {
   private static String snippetInputFilePath = "./input/snippet.xml";
   private static String snippetOutputFilePath = "./output/snippet.html";
 
-  // private static void writeOutput(String outputContent) throws IOException {
-  //   FileWriter outputFileWriter = new FileWriter(snippetOutputFilePath);
-  //   outputFileWriter.write(outputContent);
-  //   outputFileWriter.close();
-  // }
-
   public static void main(String[] args) {
     try {
       File snippetInputFile = new File(snippetInputFilePath);
-      // HTMLSnippetElementCreator creator = new HTMLSnippetElementCreator();
       SnippetElementsExtractor extractor = new SnippetElementsExtractor(snippetInputFile);
       ArrayList<SnippetElementTarget> snippetElements = extractor.extract();
-      SnippetPersistance persistance = new SnippetPersistance(snippetOutputFilePath);
-      // ArrayList<SnippetElementTarget> snippetElements = persistance.load();
-      persistance.persist(snippetElements);
-      // ArrayList<String> extractedElements = extractor.extract();
 
-      // String result = "";
-      //
-      // for (int i = 0; i < extractedElements.size(); i++) {
-      //   result += extractedElements.get(i);
-      // }
-      //
-      // writeOutput(result);
+      SnippetPersistance persistance = new SnippetPersistance(snippetOutputFilePath);
+      persistance.persist(snippetElements);
     } catch (ParserConfigurationException e) {
       System.out.println("An XML parser configuration error occurred.");
       e.printStackTrace();
