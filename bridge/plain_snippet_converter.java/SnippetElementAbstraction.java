@@ -1,7 +1,7 @@
 abstract class SnippetElementAbstraction {
-  protected SnippetElementImplementator implementator;
+  protected SnippetElementImplementor implementator;
 
-  public SnippetElementAbstraction(SnippetElementImplementator implementator) {
+  public SnippetElementAbstraction(SnippetElementImplementor implementator) {
     this.implementator = implementator;
   }
 

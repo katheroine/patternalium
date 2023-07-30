@@ -71,14 +71,14 @@ class SnippetElementsExtractor {
   private void constructElement(Node element) {
     switch (element.getNodeName()) {
       case "paragraph":
-        HTMLSnippetElementConcreteImplementator HTMLSnippetParagraphElement = new HTMLSnippetElementConcreteImplementator("p", refineText(element.getTextContent()));
+        HTMLSnippetElementConcreteImplementor HTMLSnippetParagraphElement = new HTMLSnippetElementConcreteImplementor("p", refineText(element.getTextContent()));
         SnippetElementRefinedAbstraction snippetParagraphElement = new SnippetElementRefinedAbstraction(HTMLSnippetParagraphElement);
         extractedElements.add(snippetParagraphElement);
 
         break;
       case "list":
         String[] listRawItems = splitText(element.getTextContent());
-        ArrayList<SnippetElementImplementator> listItems = new ArrayList<SnippetElementImplementator>();
+        ArrayList<SnippetElementImplementor> listItems = new ArrayList<SnippetElementImplementor>();
 
         for (String rawListItem : listRawItems) {
           String refinedListItem = refineText(rawListItem);
@@ -86,17 +86,17 @@ class SnippetElementsExtractor {
           if (refinedListItem == "")
             continue;
 
-          HTMLSnippetElementConcreteImplementator HTMLSnippetListItemElement = new HTMLSnippetElementConcreteImplementator("li", refinedListItem);
+          HTMLSnippetElementConcreteImplementor HTMLSnippetListItemElement = new HTMLSnippetElementConcreteImplementor("li", refinedListItem);
           listItems.add(HTMLSnippetListItemElement);
         }
 
-        HTMLSnippetElementConcreteImplementator HTMLSnippetListElement = new HTMLSnippetElementConcreteImplementator("ul", listItems);
+        HTMLSnippetElementConcreteImplementor HTMLSnippetListElement = new HTMLSnippetElementConcreteImplementor("ul", listItems);
         SnippetElementRefinedAbstraction snippetListElement = new SnippetElementRefinedAbstraction(HTMLSnippetListElement);
         extractedElements.add(snippetListElement);
 
         break;
       case "source":
-        HTMLSnippetElementConcreteImplementator HTMLSnippetSourceElement = new HTMLSnippetElementConcreteImplementator("cite", refineText(element.getTextContent()));
+        HTMLSnippetElementConcreteImplementor HTMLSnippetSourceElement = new HTMLSnippetElementConcreteImplementor("cite", refineText(element.getTextContent()));
         SnippetElementRefinedAbstraction snippetSourceElement = new SnippetElementRefinedAbstraction(HTMLSnippetSourceElement);
         extractedElements.add(snippetSourceElement);
 

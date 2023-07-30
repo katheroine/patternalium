@@ -1,5 +1,5 @@
 class SnippetElementRefinedAbstraction extends SnippetElementAbstraction {
-  public SnippetElementRefinedAbstraction(SnippetElementImplementator implementator) {
+  public SnippetElementRefinedAbstraction(SnippetElementImplementor implementator) {
     super(implementator);
   }
 

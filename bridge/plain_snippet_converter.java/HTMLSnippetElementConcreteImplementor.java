@@ -1,11 +1,11 @@
 import java.util.ArrayList;
 
-class HTMLSnippetElementConcreteImplementator extends SnippetElementImplementator {
-  public HTMLSnippetElementConcreteImplementator(String tag, String contentCore) {
+class HTMLSnippetElementConcreteImplementor extends SnippetElementImplementor {
+  public HTMLSnippetElementConcreteImplementor(String tag, String contentCore) {
     super(tag, contentCore);
   }
 
-  public HTMLSnippetElementConcreteImplementator(String tag, ArrayList<SnippetElementImplementator> nestedElements) {
+  public HTMLSnippetElementConcreteImplementor(String tag, ArrayList<SnippetElementImplementor> nestedElements) {
     super(tag, nestedElements);
   }
 
@@ -26,7 +26,7 @@ class HTMLSnippetElementConcreteImplementator extends SnippetElementImplementato
   private String getNestedElementsHTMLContent() {
     String nestedElementsHTMLContent = "";
 
-    for(SnippetElementImplementator nestedElement : nestedElements) {
+    for(SnippetElementImplementor nestedElement : nestedElements) {
       nestedElementsHTMLContent += nestedElement.getHTMLContent();
     }
 
