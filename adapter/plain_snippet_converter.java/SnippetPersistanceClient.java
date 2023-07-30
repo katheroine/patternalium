@@ -3,18 +3,18 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
-class SnippetPersistance {
+class SnippetPersistanceClient {
   private static String snippetOutputFilePath;
 
-  public SnippetPersistance(String snippetOutputFilePath) {
+  public SnippetPersistanceClient(String snippetOutputFilePath) {
     this.snippetOutputFilePath = snippetOutputFilePath;
   }
 
   public void persist(ArrayList<SnippetElementTarget> snippetElements) throws IOException  {
       String fileContent = "";
 
-      for (int i = 0; i < snippetElements.size(); i++) {
-        fileContent += snippetElements.get(i).getContent();
+      for (SnippetElementTarget snippetElement : snippetElements) {
+        fileContent += snippetElement.getContent();
       }
 
       writeToOutputFile(fileContent);

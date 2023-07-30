@@ -16,7 +16,7 @@ class SnippetConverting {
       SnippetElementsExtractor extractor = new SnippetElementsExtractor(snippetInputFile);
       ArrayList<SnippetElementTarget> snippetElements = extractor.extract();
 
-      SnippetPersistance persistance = new SnippetPersistance(snippetOutputFilePath);
+      SnippetPersistanceClient persistance = new SnippetPersistanceClient(snippetOutputFilePath);
       persistance.persist(snippetElements);
     } catch (ParserConfigurationException e) {
       System.out.println("An XML parser configuration error occurred.");

@@ -1,2 +1,2 @@
-javac SnippetConverting.java SnippetElementsExtractor.java SnippetPersistance.java SnippetElementAdapter.java SnippetElementTarget.java HTMLSnippetElementAdaptee.java
+javac SnippetConverting.java SnippetElementsExtractor.java SnippetPersistanceClient.java SnippetElementAdapter.java SnippetElementTarget.java HTMLSnippetElementAdaptee.java
 java SnippetConverting
