@@ -7,7 +7,6 @@ class HTMLSnippetElementRealSubject implements HTMLSnippetElementSubject {
 
   public HTMLSnippetElementRealSubject(String tag, String contentCore) {
     this.tag = tag;
-    // this.contentCore = contentCore;
     this.nestedElements = new ArrayList<HTMLSnippetElementRealSubject>();
     establishContentCore(contentCore);
   }
