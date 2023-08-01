@@ -1,0 +1,2 @@
+javac SnippetConverting.java SnippetPersistanceClient.java SnippetElementsExtractor.java HTMLSnippetElementComponent.java HTMLSnippetElementConcreteComponent.java HTMLSnippetElementDecorator.java HTMLSnippetNestingElementConcreteDecorator.java
+java SnippetConverting
