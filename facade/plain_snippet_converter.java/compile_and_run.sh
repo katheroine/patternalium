@@ -1,0 +1,2 @@
+javac SnippetConvertingClient.java SnippetElementsExtractor.java FileManagerFacade.java HTMLSnippetConverter.java
+java SnippetConvertingClient
