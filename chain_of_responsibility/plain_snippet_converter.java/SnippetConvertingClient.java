@@ -12,12 +12,6 @@ class SnippetConvertingClient {
 
   public static void main(String[] args) {
     try {
-      // File snippetInputFile = new File(snippetInputFilePath);
-      // SnippetElementsExtractor extractor = new SnippetElementsExtractor(snippetInputFile);
-      // ArrayList<HTMLSnippetElementComponent> snippetElements = extractor.extract();
-
-      // SnippetPersistanceClient persistance = new SnippetPersistanceClient(snippetOutputFilePath);
-      // persistance.persist(snippetElements);
       SnippetPersistingConcreteHandler snippetPersisting = new SnippetPersistingConcreteHandler();
       SnippetExtractingConcreteHandler snippetExtracting = new SnippetExtractingConcreteHandler(snippetPersisting);
       snippetExtracting.handleConverting(snippetInputFilePath, snippetOutputFilePath, "");

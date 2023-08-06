@@ -4,13 +4,12 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 class SnippetPersistingConcreteHandler extends SnippetConvertingHandler {
-  // private static String snippetOutputFilePath;
-  //
-  // public SnippetPersistanceClient(String snippetOutputFilePath) {
-  //   this.snippetOutputFilePath = snippetOutputFilePath;
-  // }
-
   public SnippetPersistingConcreteHandler() {
+    super(null);
+  }
+
+  public SnippetPersistingConcreteHandler(SnippetConvertingHandler successor) {
+    super(successor);
   }
 
   public void handleConverting(String inputFilePath, String outputFilePath, String content) throws IOException {

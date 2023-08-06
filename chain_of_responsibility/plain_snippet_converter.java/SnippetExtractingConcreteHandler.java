@@ -14,21 +14,17 @@ class SnippetExtractingConcreteHandler extends SnippetConvertingHandler {
   private File snippetFile;
   private ArrayList<String> extractedElements;
 
-  public SnippetExtractingConcreteHandler(SnippetConvertingHandler successor) {//}, File snippetFile) {
-    this.successor = successor;
-    // super(successor);
-    // this.snippetFile = snippetFile;
+  public SnippetExtractingConcreteHandler(SnippetConvertingHandler successor) {
+    super(successor);
     extractedElements = new ArrayList<String>();
   }
 
   public void handleConverting(String inputFilePath, String outputFilePath, String content) throws ParserConfigurationException, SAXException, IOException {
-    if (successor != null) {
-      snippetFile = new File(inputFilePath);
-      extract();
-      String extractedContent = String.join("", extractedElements);
+    snippetFile = new File(inputFilePath);
+    extract();
+    String extractedContent = String.join("", extractedElements);
 
-      successor.handleConverting(inputFilePath, outputFilePath, extractedContent);
-    }
+    successor.handleConverting(inputFilePath, outputFilePath, extractedContent);
   }
 
   public ArrayList<String> extract() throws ParserConfigurationException, SAXException, IOException {
