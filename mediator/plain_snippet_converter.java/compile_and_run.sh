@@ -1,0 +1,2 @@
+javac SnippetConverting.java ConvertingMediator.java SnippetConvertingMediator.java ConvertingStepColleague.java SnippetElementsExtractingStepColleague.java SnippetPersistanceStepColleague.java HTMLSnippetConverter.java
+java SnippetConverting
