@@ -14,7 +14,7 @@ class SnippetElementsExtractingStepColleague extends ConvertingStepColleague {
   private File snippetFile;
   private ArrayList<String> extractedElements;
 
-  public SnippetElementsExtractingStepColleague(File snippetFile, ConvertingMediator convertingMediator) {
+  public SnippetElementsExtractingStepColleague(File snippetFile, ConvertingMediator convertingMediator) throws ParserConfigurationException, SAXException, IOException {
     super(convertingMediator);
     this.snippetFile = snippetFile;
     extractedElements = new ArrayList<String>();
@@ -29,8 +29,6 @@ class SnippetElementsExtractingStepColleague extends ConvertingStepColleague {
     }
 
     processed();
-
-    // return extractedElements;
   }
 
   public ArrayList<String> getExtractedElements() {
@@ -93,16 +91,5 @@ class SnippetElementsExtractingStepColleague extends ConvertingStepColleague {
         extractedElements.add(extractedElement);
         break;
     };
-  }
-
-  static String refineText(String text) {
-    return text
-      .replaceAll("\\r\\n|\\r|\\n", "")
-      .replaceAll("( )+", " ")
-      .trim();
-  }
-
-  static String[] splitText(String text) {
-    return text.split("\\r?\\n|\\r");
   }
 }
