@@ -1,0 +1,2 @@
+javac SnippetConverting.java SnippetConvertingObserver.java SnippetPersistanceObserver.java SnippetConvertingSubject.java SnippetElementsExtractorSubject.java HTMLSnippetConverter.java
+java SnippetConverting
