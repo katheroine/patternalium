@@ -12,14 +12,14 @@ import org.w3c.dom.NodeList;
 
 class SnippetElementsExtractingClient {
   private File snippetFile;
-  SnippetElementsList extractedElements;
+  SnippetElementsAggregateList extractedElements;
 
   public SnippetElementsExtractingClient(File snippetFile) {
     this.snippetFile = snippetFile;
-    extractedElements = new SnippetElementsList();
+    extractedElements = new SnippetElementsAggregateList();
   }
 
-  public SnippetElementsList extract() throws ParserConfigurationException, SAXException, IOException {
+  public SnippetElementsAggregateList extract() throws ParserConfigurationException, SAXException, IOException {
     ArrayList<Node> snippetElements = extractXMLFileElements(snippetFile);
 
     for (int i = 0; i < snippetElements.size(); i++) {

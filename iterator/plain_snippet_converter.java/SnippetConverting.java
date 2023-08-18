@@ -14,7 +14,7 @@ class SnippetConverting {
     try {
       File snippetInputFile = new File(snippetInputFilePath);
       SnippetElementsExtractingClient extractor = new SnippetElementsExtractingClient(snippetInputFile);
-      SnippetElementsList snippetElements = extractor.extract();
+      SnippetElementsAggregateList snippetElements = extractor.extract();
 
       SnippetPersistanceClient persistance = new SnippetPersistanceClient(snippetOutputFilePath);
       persistance.persist(snippetElements);

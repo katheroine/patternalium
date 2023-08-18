@@ -10,7 +10,7 @@ class SnippetPersistanceClient {
     this.snippetOutputFilePath = snippetOutputFilePath;
   }
 
-  public void persist(SnippetElementsList snippetElements) throws IOException  {
+  public void persist(SnippetElementsAggregateList snippetElements) throws IOException  {
       String fileContent = "";
       SnippetElementsListIterator extractedElementsIterator = new SnippetElementsListIterator(snippetElements);
 

@@ -1,8 +1,8 @@
 class SnippetElementsListIterator implements SnippetElementsIterator {
   private int currentIndex;
-  private SnippetElements list;
+  private SnippetElementsAggregate list;
 
-  public SnippetElementsListIterator(SnippetElements list) {
+  public SnippetElementsListIterator(SnippetElementsAggregate list) {
     this.list = list;
     currentIndex = 0;
   }
@@ -14,7 +14,7 @@ class SnippetElementsListIterator implements SnippetElementsIterator {
   public void next() {
     currentIndex++;
   }
-  
+
   public SnippetElement currentItem() {
     return list.get(currentIndex);
   }

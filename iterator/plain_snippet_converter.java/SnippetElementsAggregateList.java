@@ -1,8 +1,8 @@
-class SnippetElementsList implements SnippetElements {
+class SnippetElementsAggregateList implements SnippetElementsAggregate {
   private SnippetElement[] elements;
   int size;
 
-  public SnippetElementsList() {
+  public SnippetElementsAggregateList() {
     elements = new SnippetElement[] {};
     size = 0;
   }
