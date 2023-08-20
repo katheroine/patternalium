@@ -19,7 +19,7 @@ class SnippetConvertingClient {
     try {
       File snippetInputFile = new File(snippetInputFilePath);
       HTMLSnippetBuilder builder = new HTMLSnippetBuilder();
-      SnippetConvertingDirector director = new SnippetConvertingDirector(builder, snippetInputFile);
+      SnippetElementsExtractintDirector director = new SnippetElementsExtractintDirector(builder, snippetInputFile);
       director.construct();
       String result = builder.getResult();
       writeOutput(result);

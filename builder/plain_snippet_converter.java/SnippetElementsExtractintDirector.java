@@ -10,11 +10,11 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.FileNotFoundException;
 import org.w3c.dom.NodeList;
 
-class SnippetConvertingDirector {
+class SnippetElementsExtractintDirector {
   private SnippetBuilder snippetBuilder;
   private File snippetFile;
 
-  public SnippetConvertingDirector(SnippetBuilder snippetBuilder, File snippetFile) {
+  public SnippetElementsExtractintDirector(SnippetBuilder snippetBuilder, File snippetFile) {
     this.snippetBuilder = snippetBuilder;
     this.snippetFile = snippetFile;
   }

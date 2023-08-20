@@ -1,2 +1,2 @@
-javac SnippetConvertingClient.java SnippetConvertingDirector.java SnippetBuilder.java HTMLSnippetBuilder.java
+javac SnippetConvertingClient.java SnippetElementsExtractintDirector.java SnippetBuilder.java HTMLSnippetBuilder.java
 java SnippetConvertingClient
